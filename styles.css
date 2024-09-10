@@ -1,0 +1,195 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffecd2);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: gradientBG 15s ease infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.background-left, .background-right {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.background-left {
+    left: 0;
+    background-image: url('left-background.jpg');
+}
+
+.background-right {
+    right: 0;
+    background-image: url('right-background.jpg');
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    max-width: 80%;
+    margin: 0 auto;
+    z-index: 1;
+    animation: pulse 2s infinite;
+    position: relative; /* 添加这行 */
+    z-index: 2; /* 添加这行，确保容器在浮动图片之上 */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+h1 {
+    color: #ff4757;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.greetings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.greeting {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #5352ed;
+    color: white;
+    border-radius: 30px;
+    animation: float 5s infinite ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.greeting:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background-color: #ff4757;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.floating-images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 修改这里 */
+    z-index: 1; /* 降低 z-index */
+}
+
+.floating-image-container {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 150px; /* 添加明确的宽度 */
+    height: 150px; /* 添加明确的高度 */
+    pointer-events: auto; /* 添加这行 */
+}
+
+.floating-image-container:hover {
+    transform: scale(1.1);
+}
+
+.floating-image {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0.9;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.floating-image:hover {
+    transform: scale(1.1);
+}
+
+.floating-image:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.floating-image:nth-child(2) { top: 20%; right: 20%; animation-delay: 2s; }
+.floating-image:nth-child(3) { bottom: 15%; left: 30%; animation-delay: 4s; }
+.floating-image:nth-child(4) { bottom: 25%; right: 15%; animation-delay: 6s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.image-upload {
+    margin-top: 1rem;
+}
+
+.image-upload input {
+    display: none;
+}
+
+.image-upload label {
+    background-color: #5352ed;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-upload label:hover {
+    background-color: #3c3bba;
+}
+
+#deleteAllImages {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+}
+
+#deleteAllImages:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
